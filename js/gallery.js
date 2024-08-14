@@ -90,6 +90,7 @@ for (const image of images) {
   img.dataset.source = image.original;
   img.alt = image.description;
   img.width = 360;
+  img.height = 200;
 
   // Додаємо <img> до <a>
   link.appendChild(img);
