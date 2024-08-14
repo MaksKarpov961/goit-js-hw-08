@@ -63,3 +63,51 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
+
+// Знаходимо елемент gallery
+const gallery = document.querySelector('.gallery');
+
+// робимо буфер для додавання елементу одним кроком
+const fragment = document.createDocumentFragment();
+
+// запускаєм цикл для додавання картинок
+for (const image of images) {
+
+  // Створюємо новий елемент <li>
+  const listItem = document.createElement('li');
+  listItem.classList.add('gallery-item');
+
+  // Створюємо новий елемент <a>
+  const link = document.createElement('a');
+  link.classList.add('gallery-link');
+  link.href = image.original;
+
+  // Створюємо новий елемент <img>
+  const img = document.createElement('img');
+  img.classList.add('gallery-image');
+  img.src = image.preview;
+  img.dataset.source = image.original;
+  img.alt = image.description;
+  img.width = 360;
+
+  // Додаємо <img> до <a>
+  link.appendChild(img);
+
+  // Додаємо <a> до <li>
+  listItem.appendChild(link);
+
+  // Додаємо <li> до фрагмента
+  fragment.appendChild(listItem);
+}
+
+// Забороняємо стандартну поведінку посилання при кліку
+gallery.addEventListener('click', (event) => {
+  if (event.target.closest('.gallery-link')) {
+    event.preventDefault();
+  }
+});
+
+
+// Додаємо фрагмент до gallery
+gallery.appendChild(fragment);
