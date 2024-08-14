@@ -64,20 +64,19 @@ select {
 
 /* ---------------------------------------------------------------------------------------- */
 
-/* custom-lightbox.css */
 
 /* Змінюємо фон модального вікна */
 .basicLightbox--visible .basicLightbox__placeholder {
   background: rgba(46, 47, 66, 0.8);
-  /* Ваш новий фон */
+
 }
 
 /* Налаштування позиціювання та інших стилів */
 .basicLightbox--visible .basicLightbox__content {
   z-index: 1000;
-  /* Ваш порядок стека */
+
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  /* Тривалість та час переходу */
+
 }
 
 body{

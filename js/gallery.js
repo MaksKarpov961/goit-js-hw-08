@@ -117,16 +117,20 @@ links.forEach(link => {
 
 
 
-
+// створюємо модальне вікно і підключаєм нашу картинку 
 gallery.addEventListener('click', (event) => {
   const target = event.target;
 
   if (target.classList.contains('gallery-image')) {
     const linkOriginal = target.dataset.source;
 
-      // Створюємо HTML-код для модального вікна
+    const imageAlt = target.alt
+
+    
+    // Створюємо HTML-код для модального вікна
+    
       const instance = basicLightbox.create(`
-        <img src="${linkOriginal}" width="1112" height="640" />
+        <img src="${linkOriginal}" width="1112" height="640" alt="${imageAlt}" />
       `);
       instance.show();
   }
