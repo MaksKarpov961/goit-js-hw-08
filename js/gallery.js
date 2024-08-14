@@ -99,15 +99,35 @@ for (const image of images) {
 
   // Додаємо <li> до фрагмента
   fragment.appendChild(listItem);
+  
 }
-
-// Забороняємо стандартну поведінку посилання при кліку
-gallery.addEventListener('click', (event) => {
-  if (event.target.closest('.gallery-link')) {
-    event.preventDefault();
-  }
-});
-
 
 // Додаємо фрагмент до gallery
 gallery.appendChild(fragment);
+
+
+// Забороняємо стандартну поведінку посилання при кліку
+const links = document.querySelectorAll('.gallery-link');
+
+links.forEach(link => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+  });
+});
+
+
+
+
+gallery.addEventListener('click', (event) => {
+  const target = event.target;
+
+  if (target.classList.contains('gallery-image')) {
+    const linkOriginal = target.dataset.source;
+
+      // Створюємо HTML-код для модального вікна
+      const instance = basicLightbox.create(`
+        <img src="${linkOriginal}" width="1112" height="640" />
+      `);
+      instance.show();
+  }
+});
